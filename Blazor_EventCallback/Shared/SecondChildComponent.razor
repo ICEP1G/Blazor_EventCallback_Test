@@ -1,0 +1,32 @@
+﻿
+
+<div style="display: flex; flex-direction: column; align-items: center; height: 200px; width: 400px; border: solid 1px black; padding:16px">
+    <h3>SecondChildComponent</h3>
+    <br />
+
+    <div style="display: flex; flex-direction: column">
+        <input style="height: 32px;" @bind-value="@SecondChildInput" @bind-value:event="oninput"/>
+        <br/>
+        <span>
+            <label>Résultat : @_secondChildInput</label>
+        </span>
+    </div>
+
+</div>
+
+@code {
+    private string _secondChildInput;
+
+    [Parameter]
+    public string SecondChildInput
+    {
+        get { return _secondChildInput; }
+        set { _secondChildInput = value;
+            SecondChildInputChanged.InvokeAsync(value);
+        }
+    }
+
+    [Parameter] public EventCallback<string> SecondChildInputChanged { get; set; }
+}
+
+

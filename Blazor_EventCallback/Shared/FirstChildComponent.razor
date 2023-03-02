@@ -1,0 +1,32 @@
+﻿
+
+<div style="display: flex; flex-direction: column; align-items: center; height: 200px; width: 400px; border: solid 1px black; padding:16px">
+    <h3>FirstChildComponent</h3>
+    <br />
+
+    <div style="display: flex; flex-direction: column">
+        <input style="height: 32px;" @bind-value="@FirstChildInput" @bind-value:event="oninput"/>
+        <br/>
+        <span>
+            <label>Résultat : @_firstChildInput</label>
+        </span>
+    </div>
+
+</div>
+
+@code {
+    private string _firstChildInput;
+
+    [Parameter]
+    public string FirstChildInput
+    {
+        get { return _firstChildInput; }
+        set { _firstChildInput = value;
+            FirstChildInputChanged.InvokeAsync(value);
+        }
+    }
+
+    [Parameter] public EventCallback<string> FirstChildInputChanged { get; set; }
+}
+
+

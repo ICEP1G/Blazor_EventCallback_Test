@@ -1,0 +1,23 @@
+﻿@page "/counter"
+
+<PageTitle>Component Page</PageTitle>
+
+
+<div>
+    <br : />
+    <div style="display: flex; justify-content:center; font-weight: bold;"><h1>Vous vous trouvez dans le composant Parent</h1></div>
+    <br />
+    <br />
+    <br />
+    <div style="display: flex; justify-content: space-evenly">
+        <FirstChildComponent  @bind-FirstChildInput="_valueToPass"/>
+        <SecondChildComponent @bind-SecondChildInput="_valueToPass" />
+    </div>
+</div>
+
+
+@code {
+    private string _valueToPass { get; set; }
+}
+
+
